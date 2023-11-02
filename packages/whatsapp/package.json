@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.5.0"
+    "@whiskeysockets/baileys": "^6.5.0",
+    "mongoose": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.10",
