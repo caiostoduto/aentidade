@@ -1,0 +1,22 @@
+{
+  "name": "aentidade",
+  "version": "0.1.0",
+  "description": "",
+  "private": "true",
+  "engines": {
+    "pnpm": ">=8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiostoduto/aentidade.git"
+  },
+  "author": "caiostoduto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caiostoduto/aentidade/issues"
+  },
+  "homepage": "https://github.com/caiostoduto/aentidade#readme"
+}
