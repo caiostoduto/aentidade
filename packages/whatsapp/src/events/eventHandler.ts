@@ -3,10 +3,11 @@ import { join } from 'path'
 import { type WhatsAppBot } from '../bot'
 import { type BaileysEventMap } from '@whiskeysockets/baileys'
 import type makeWASocket from '@whiskeysockets/baileys'
+import assert from 'assert'
 
 export default class WhatsAppEventHandler {
   bot: WhatsAppBot
-  events = new Map<string, WhatsAppEvent[]>()
+  events = new Map<keyof BaileysEventMap, WhatsAppEvent[]>()
 
   constructor (bot: WhatsAppBot) {
     this.bot = bot
@@ -25,8 +26,9 @@ export default class WhatsAppEventHandler {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const WhatsAppEvent = require(join(__dirname, eventDir, eventFile)).default
 
-        this.events.set(eventDir,
-          (this.events.get(eventDir) ?? []).concat(new WhatsAppEvent(this.bot)))
+        this.events.set(eventDir as keyof BaileysEventMap,
+          (this.events.get(eventDir as keyof BaileysEventMap) ?? [])
+            .concat(new WhatsAppEvent(this.bot)))
       })
     })
 
@@ -35,11 +37,13 @@ export default class WhatsAppEventHandler {
 
   updateEV (): void {
     [...this.events.entries()].forEach((event) => {
-      (this.bot.sock as ReturnType<typeof makeWASocket>)
+      assert(this.bot.sock !== undefined);
+
+      (this.bot.sock)
         .ev.on(event[0] as keyof BaileysEventMap, (...args: any[]) => {
           event[1].forEach((event) => {
             if (event.enabled) {
-              event.handler(...args)
+              void event.handler(...args)
             }
           })
         })
@@ -49,5 +53,5 @@ export default class WhatsAppEventHandler {
 
 export interface WhatsAppEvent {
   enabled: boolean
-  handler: (...args: any[]) => void
+  handler: (...args: any[]) => Promise<void>
 }

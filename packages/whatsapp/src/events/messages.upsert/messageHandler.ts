@@ -10,11 +10,8 @@ export default class SaveCreds implements WhatsAppEvent {
     this.bot = bot
   }
 
-  async handler (msg: MessagesUpsertEvent): Promise<void> {
-    if (msg.type !== 'notify') return
-
-    const { messages } = msg
-    console.log(messages)
+  async handler (msgEvent: MessagesUpsertEvent): Promise<void> {
+    await this.bot.commandHandler.onMessageUpsert(msgEvent)
   }
 }
 

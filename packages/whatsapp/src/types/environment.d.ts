@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       NODE_ENV: 'development' | 'production'
       MONGO_DB: string
+      PREFIX: string
     }
   }
 }

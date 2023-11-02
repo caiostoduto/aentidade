@@ -1,3 +1,4 @@
+import assert from 'assert'
 import { type WhatsAppBot } from '../../bot'
 import { type WhatsAppEvent } from '../eventHandler'
 
@@ -10,6 +11,7 @@ export default class SaveCreds implements WhatsAppEvent {
   }
 
   async handler (): Promise<void> {
-    void (this.bot.authstate?.saveCreds as (() => Promise<void>))()
+    assert(this.bot.authstate?.saveCreds !== undefined)
+    void (this.bot.authstate.saveCreds)()
   }
 }
