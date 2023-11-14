@@ -11,7 +11,7 @@ export default class SaveCreds implements WhatsAppEvent {
   }
 
   async handler (msgEvent: MessagesUpsertEvent): Promise<void> {
-    await this.bot.commandHandler.onMessageUpsert(msgEvent)
+    void this.bot.commandHandler.onMessageUpsert(msgEvent)
   }
 }
 
