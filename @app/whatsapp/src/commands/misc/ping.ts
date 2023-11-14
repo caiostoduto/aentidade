@@ -14,7 +14,10 @@ export default class SaveCreds implements WhatsAppCommand {
 
   async handler (msgInfo: proto.IWebMessageInfo): Promise<void> {
     assert(this.bot.sock !== undefined && msgInfo.key.remoteJid)
+    void this.bot.sock.readMessages([msgInfo])
 
-    await this.bot.sock.sendMessage(msgInfo.key.remoteJid, { text: 'Pong!' })
+    void this.bot.sock.sendMessage(msgInfo.key.remoteJid, {
+      text: '🏓 Pong!'
+    })
   }
 }
