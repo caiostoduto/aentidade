@@ -38,7 +38,6 @@ export default class WhatsAppCommandHandler {
     if (msgEvent.type !== 'notify') return
     assert(process.env.PREFIX !== undefined && this.bot.sock)
 
-    void this.bot.sock.readMessages(msgEvent.messages)
     console.log(JSON.stringify(msgEvent))
 
     for (const msgInfo of msgEvent.messages) {
