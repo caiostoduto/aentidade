@@ -1,7 +1,5 @@
 import makeWASocket, { useMultiFileAuthState } from '@whiskeysockets/baileys'
 import WhatsAppEventHandler from './events/eventHandler'
-import type mongoose from 'mongoose'
-import { connect } from './utils/db'
 import WhatsAppCommandHandler from './commands/commandHandler'
 import assert from 'assert'
 
@@ -10,7 +8,6 @@ export class WhatsAppBot {
   eventHandler: WhatsAppEventHandler
   commandHandler: WhatsAppCommandHandler
   sock: ReturnType<typeof makeWASocket> | undefined
-  db: typeof mongoose | undefined
 
   constructor () {
     this.commandHandler = new WhatsAppCommandHandler(this).loadAll()
@@ -24,7 +21,6 @@ export class WhatsAppBot {
   }
 
   async connect (): Promise<void> {
-    if (this.db === undefined) this.db = await connect()
     if (this.authstate === undefined) await this.loadAuth()
     assert(this.authstate !== undefined)
 
