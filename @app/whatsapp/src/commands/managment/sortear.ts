@@ -21,7 +21,7 @@ export default class Sortear implements WhatsAppCommand {
     let participantes = [...this.bot.participantes.entries()]
       .filter((p) => p[1].participando)
       .sort(() => Math.random() - 0.5)
-      .sort((a, b) => a[1].partidas - b[1].partidas)
+      .sort((a, b) => a[1].queue - b[1].queue)
 
     if (participantes.length >= 12) {
       participantes = participantes.slice(0, 12)
@@ -43,7 +43,7 @@ export default class Sortear implements WhatsAppCommand {
 
     for (const [i, t] of [time1, time2].entries()) {
       for (const p of t) {
-        p[1].partidas++
+        p[1].queue++
 
         await this.bot.sock.sendMessage(
           p[0], {

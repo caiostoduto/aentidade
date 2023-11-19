@@ -30,7 +30,7 @@ export default class Sair implements WhatsAppCommand {
       this.bot.participantes.set(msgInfo.key.remoteJid, {
         nome: msgInfo.pushName as string,
         participando: false,
-        partidas: participante?.partidas ?? 0
+        queue: participante?.queue ?? 0
       })
 
       await this.bot.sock.sendMessage(

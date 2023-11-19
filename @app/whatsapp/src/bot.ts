@@ -39,5 +39,5 @@ export class WhatsAppBot {
 export interface Participante {
   nome: string
   participando: boolean
-  partidas: number
+  queue: number
 }
