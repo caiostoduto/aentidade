@@ -41,8 +41,6 @@ export default class WhatsAppCommandHandler {
     console.log(JSON.stringify(msgEvent))
 
     for (const msgInfo of msgEvent.messages) {
-      if (msgInfo.key.fromMe !== true) continue
-
       if (msgInfo.message?.conversation == null) return
       const text = msgInfo.message.conversation
 
@@ -51,7 +49,7 @@ export default class WhatsAppCommandHandler {
       await [...this.commands.values()]
         .reduce((acc, val) => acc.concat(val), [])
         .find((cmd) => cmd.enabled && cmd.name === text.split(' ')[0].slice(1))
-        ?.run(msgInfo)
+        ?.run(msgInfo, text.split(' '))
     }
   }
 }
@@ -61,7 +59,7 @@ type CommandCategory = string
 export interface WhatsAppCommand {
   name: string
   enabled: boolean
-  run: (msgInfo: proto.IWebMessageInfo) => Promise<void>
+  run: (msgInfo: proto.IWebMessageInfo, args: string[]) => Promise<void>
 }
 
 export interface MessagesUpsertEvent {

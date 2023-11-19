@@ -12,11 +12,11 @@ export default class Ping implements WhatsAppCommand {
     this.bot = bot
   }
 
-  async run (msgInfo: proto.IWebMessageInfo): Promise<void> {
+  async run (msgInfo: proto.IWebMessageInfo, args: string[]): Promise<void> {
     assert(this.bot.sock !== undefined && msgInfo.key.remoteJid)
-    void this.bot.sock.readMessages([msgInfo])
+    await this.bot.sock.readMessages([msgInfo])
 
-    void this.bot.sock.sendMessage(msgInfo.key.remoteJid, {
+    await this.bot.sock.sendMessage(msgInfo.key.remoteJid, {
       text: '🏓 Pong!'
     })
   }
