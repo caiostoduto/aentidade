@@ -9,6 +9,7 @@ export class WhatsAppBot {
   commandHandler: WhatsAppCommandHandler
   sock: ReturnType<typeof makeWASocket> | undefined
   participantes = new Map<string, Participante>()
+  partidas = new Array<Partida>()
 
   constructor () {
     this.commandHandler = new WhatsAppCommandHandler(this).loadAll()
@@ -40,4 +41,8 @@ export interface Participante {
   nome: string
   participando: boolean
   queue: number
+}
+
+export interface Partida {
+  times: Array<Map<string, Participante>>
 }

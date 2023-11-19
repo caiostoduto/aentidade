@@ -49,9 +49,23 @@ export default class WhatsAppCommandHandler {
       await [...this.commands.values()]
         .reduce((acc, val) => acc.concat(val), [])
         .find((cmd) => cmd.enabled && cmd.name === text.split(' ')[0].slice(1))
-        ?.run(msgInfo, text.split(' '))
+        ?.run(
+          msgInfo,
+          text.split(' '),
+          getRole(msgInfo)
+        )
     }
   }
+}
+
+function getRole (msgInfo: proto.IWebMessageInfo): Roles {
+  const coordenadores = (process.env.COORDENADORES)?.split(',')
+
+  if (coordenadores?.includes(msgInfo.key.participant as string)) {
+    return Roles.COORDENADOR
+  }
+
+  return Roles.PARTICIPANTE
 }
 
 type CommandCategory = string
@@ -59,10 +73,15 @@ type CommandCategory = string
 export interface WhatsAppCommand {
   name: string
   enabled: boolean
-  run: (msgInfo: proto.IWebMessageInfo, args: string[]) => Promise<void>
+  run: (msgInfo: proto.IWebMessageInfo, args: string[], role: Roles) => Promise<void>
 }
 
 export interface MessagesUpsertEvent {
   messages: proto.IWebMessageInfo[]
   type: MessageUpsertType
+}
+
+export enum Roles {
+  PARTICIPANTE,
+  COORDENADOR
 }
