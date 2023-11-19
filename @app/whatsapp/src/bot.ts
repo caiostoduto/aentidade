@@ -8,6 +8,7 @@ export class WhatsAppBot {
   eventHandler: WhatsAppEventHandler
   commandHandler: WhatsAppCommandHandler
   sock: ReturnType<typeof makeWASocket> | undefined
+  participantes = new Map<string, Participante>()
 
   constructor () {
     this.commandHandler = new WhatsAppCommandHandler(this).loadAll()
@@ -33,4 +34,10 @@ export class WhatsAppBot {
 
     this.eventHandler.updateEV()
   }
+}
+
+export interface Participante {
+  nome: string
+  participando: boolean
+  partidas: number
 }
