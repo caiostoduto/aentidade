@@ -34,6 +34,17 @@ export default class Sortear implements WhatsAppCommand {
       .sort(() => Math.random() - 0.5)
       .sort((a, b) => a[1].queue - b[1].queue)
 
+    if (participantes.length < 1) {
+      await this.bot.sock.sendMessage(
+        msgInfo.key.remoteJid, {
+          text:
+          `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+          'Não há participantes suficientes para sortear!'
+        })
+
+      return
+    }
+
     if (participantes.length >= 12) {
       participantes = participantes.slice(0, 12)
     } else if (participantes.length % 2 === 1) {
