@@ -24,7 +24,7 @@ export default class Participar implements WhatsAppCommand {
         nome: msgInfo.pushName as string,
         participando: true,
         queue: participante?.queue ?? [...this.bot.participantes.values()]
-          .sort((a, b) => a.queue - b.queue)[0].queue
+          .sort((a, b) => a.queue - b.queue)[0]?.queue ?? 0
       })
 
       await this.bot.sock.sendMessage(
