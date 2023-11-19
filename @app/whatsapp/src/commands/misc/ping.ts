@@ -3,7 +3,7 @@ import { type WhatsAppBot } from '../../bot'
 import { type WhatsAppCommand } from '../commandHandler'
 import assert from 'assert'
 
-export default class SaveCreds implements WhatsAppCommand {
+export default class Ping implements WhatsAppCommand {
   name = 'ping'
   enabled = true
   bot: WhatsAppBot
@@ -12,7 +12,7 @@ export default class SaveCreds implements WhatsAppCommand {
     this.bot = bot
   }
 
-  async handler (msgInfo: proto.IWebMessageInfo): Promise<void> {
+  async run (msgInfo: proto.IWebMessageInfo): Promise<void> {
     assert(this.bot.sock !== undefined && msgInfo.key.remoteJid)
     void this.bot.sock.readMessages([msgInfo])
 

@@ -47,10 +47,11 @@ export default class WhatsAppCommandHandler {
       const text = msgInfo.message.conversation
 
       if (!text.startsWith(process.env.PREFIX)) return
+
       await [...this.commands.values()]
         .reduce((acc, val) => acc.concat(val), [])
         .find((cmd) => cmd.enabled && cmd.name === text.split(' ')[0].slice(1))
-        ?.handler(msgInfo)
+        ?.run(msgInfo)
     }
   }
 }
@@ -60,7 +61,7 @@ type CommandCategory = string
 export interface WhatsAppCommand {
   name: string
   enabled: boolean
-  handler: (msgInfo: proto.IWebMessageInfo) => Promise<void>
+  run: (msgInfo: proto.IWebMessageInfo) => Promise<void>
 }
 
 export interface MessagesUpsertEvent {
