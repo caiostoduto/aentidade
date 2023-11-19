@@ -34,7 +34,7 @@ export default class Sortear implements WhatsAppCommand {
       .sort(() => Math.random() - 0.5)
       .sort((a, b) => a[1].queue - b[1].queue)
 
-    if (participantes.length < 1) {
+    if (participantes.length <= 1) {
       await this.bot.sock.sendMessage(
         msgInfo.key.remoteJid, {
           text:
@@ -77,7 +77,8 @@ export default class Sortear implements WhatsAppCommand {
             `Olá, ${p[1].nome}! ✨✨\n` +
             'Você foi convocado para jogar!\n\n' +
             `Seu time (${i + 1}) é: ${t.map((p) => p[1].nome).join(', ')}\n\n` +
-            'Caso deseje pular essa partida use o comando "/pular"'
+            'Caso deseje pular essa partida use o comando "/pular"\n' +
+            'Ou então se desejar sair da fila use o comando "/sair"'
           })
       }
     }
