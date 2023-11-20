@@ -2,6 +2,7 @@ import { type proto } from '@whiskeysockets/baileys'
 import { type WhatsAppBot } from '../../bot'
 import { Roles, type WhatsAppCommand } from '../commandHandler'
 import assert from 'assert'
+import { sendMessageConvocado } from '../../utils/misc'
 
 export default class Sortear implements WhatsAppCommand {
   name = 'sortear'
@@ -22,7 +23,7 @@ export default class Sortear implements WhatsAppCommand {
       await this.bot.sock.sendMessage(
         msgInfo.key.remoteJid, {
           text:
-          `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+          `Olá, ${msgInfo.pushName}!! ✨\n\n` +
           'Você não tem permissão para usar esse comando!'
         })
 
@@ -38,7 +39,7 @@ export default class Sortear implements WhatsAppCommand {
       await this.bot.sock.sendMessage(
         msgInfo.key.remoteJid, {
           text:
-          `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+          `Olá, ${msgInfo.pushName}!! ✨\n\n` +
           'Não há participantes suficientes para sortear!'
         })
 
@@ -62,7 +63,7 @@ export default class Sortear implements WhatsAppCommand {
     await this.bot.sock.sendMessage(
       msgInfo.key.remoteJid, {
         text:
-        `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+        `Olá, ${msgInfo.pushName}!! ✨\n\n` +
         `Time 1: ${time0.map((p) => p[1].nome).join(', ')}\n` +
         `Time 2: ${time1.map((p) => p[1].nome).join(', ')}`
       })
@@ -71,15 +72,7 @@ export default class Sortear implements WhatsAppCommand {
       for (const p of t) {
         p[1].queue++
 
-        await this.bot.sock.sendMessage(
-          p[0], {
-            text:
-            `Olá, ${p[1].nome}! ✨✨\n` +
-            'Você foi convocado para jogar!\n\n' +
-            `Seu time (${i + 1}) é: ${t.map((p) => p[1].nome).join(', ')}\n\n` +
-            'Caso deseje pular essa partida use o comando "/pular"\n' +
-            'Ou então se desejar sair da fila use o comando "/sair"'
-          })
+        await sendMessageConvocado(this.bot, p, i)
       }
     }
   }

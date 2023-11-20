@@ -13,14 +13,14 @@ export default class Participar implements WhatsAppCommand {
   }
 
   async run (msgInfo: proto.IWebMessageInfo): Promise<void> {
-    assert(this.bot.sock !== undefined && msgInfo.key.remoteJid)
+    assert(this.bot.sock !== undefined && (msgInfo.key.remoteJid != null) && (msgInfo.key.participant != null))
     await this.bot.sock.readMessages([msgInfo])
 
-    const id = msgInfo.key.remoteJid
+    const participantId = msgInfo.key.participant
 
-    const participante = this.bot.participantes.get(id)
+    const participante = this.bot.participantes.get(participantId)
     if (participante === undefined || !participante.participando) {
-      this.bot.participantes.set(msgInfo.key.remoteJid, {
+      this.bot.participantes.set(participantId, {
         nome: msgInfo.pushName as string,
         participando: true,
         queue: participante?.queue ?? [...this.bot.participantes.values()]
@@ -30,14 +30,14 @@ export default class Participar implements WhatsAppCommand {
       await this.bot.sock.sendMessage(
         msgInfo.key.remoteJid, {
           text:
-          `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+          `Olá, ${msgInfo.pushName}! ✨\n\n` +
           'Agora você está participando dos sorteios dos times!'
         })
     } else {
       await this.bot.sock.sendMessage(
         msgInfo.key.remoteJid, {
           text:
-          `Olá, ${msgInfo.pushName}! ✨✨\n\n` +
+          `Olá, ${msgInfo.pushName}!! ✨\n\n` +
           'Você já está participando dos sorteios dos times!'
         })
     }
