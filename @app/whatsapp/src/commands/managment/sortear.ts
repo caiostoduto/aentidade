@@ -57,7 +57,8 @@ export default class Sortear implements WhatsAppCommand {
     const time1 = participantes.slice(participantes.length / 2)
 
     this.bot.partidas.push({
-      times: [new Map(time0), new Map(time1)]
+      times: [new Map(time0), new Map(time1)],
+      _excluded: []
     })
 
     await this.bot.sock.sendMessage(

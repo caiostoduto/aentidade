@@ -9,7 +9,11 @@ export async function reshuffleParticipante (bot: WhatsAppBot, participanteId: s
   console.log(participantesPartida)
 
   const otherParticipantes = [...bot.participantes.entries()]
-    .filter((p) => !participantesPartida.includes(p[0]) && p[1].participando)
+    .filter((p) =>
+      !participantesPartida.includes(p[0]) &&
+      !bot.partidas[bot.partidas.length - 1]?._excluded.includes(p[0]) &&
+      p[1].participando
+    )
 
   console.log(otherParticipantes)
 
@@ -20,6 +24,7 @@ export async function reshuffleParticipante (bot: WhatsAppBot, participanteId: s
   console.log(newParticipante)
 
   bot.partidas[bot.partidas.length - 1]?.times[timeNum].delete(participanteId)
+  bot.partidas[bot.partidas.length - 1]?._excluded.push(participanteId)
 
   if (newParticipante !== undefined) {
     bot.partidas[bot.partidas.length - 1].times[timeNum].set(newParticipante[0], newParticipante[1])
