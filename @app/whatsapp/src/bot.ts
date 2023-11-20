@@ -37,6 +37,8 @@ export class WhatsAppBot {
   }
 }
 
+type ParticipanteId = string
+
 export interface Participante {
   nome: string
   participando: boolean
@@ -44,5 +46,6 @@ export interface Participante {
 }
 
 export interface Partida {
-  times: Array<Map<string, Participante>>
+  times: Array<Map<ParticipanteId, Participante>>
+  _excluded: ParticipanteId[]
 }
