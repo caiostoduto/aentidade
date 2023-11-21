@@ -36,7 +36,7 @@ export default class WhatsAppCommandHandler {
 
   async onMessageUpsert (msgEvent: MessagesUpsertEvent): Promise<void> {
     if (msgEvent.type !== 'notify') return
-    assert(process.env.PREFIX !== undefined && this.bot.sock)
+    assert(this.bot.sock)
 
     console.log(JSON.stringify(msgEvent))
 
@@ -44,7 +44,7 @@ export default class WhatsAppCommandHandler {
       if (msgInfo.message?.conversation == null) return
       const text = msgInfo.message.conversation
 
-      if (!text.startsWith(process.env.PREFIX)) return
+      if (!text.startsWith(this.bot.settings.prefix)) return
 
       await [...this.commands.values()]
         .reduce((acc, val) => acc.concat(val), [])
@@ -52,14 +52,14 @@ export default class WhatsAppCommandHandler {
         ?.run(
           msgInfo,
           text.split(' '),
-          getRole(msgInfo)
+          getRole(this.bot, msgInfo)
         )
     }
   }
 }
 
-function getRole (msgInfo: proto.IWebMessageInfo): Roles {
-  const coordenadores = (process.env.COORDENADORES)?.split(',')
+function getRole (bot: WhatsAppBot, msgInfo: proto.IWebMessageInfo): Roles {
+  const coordenadores = bot.settings.coordinators
 
   if (coordenadores?.includes(msgInfo.key.participant as string)) {
     return Roles.COORDENADOR

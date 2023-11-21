@@ -2,12 +2,16 @@ import makeWASocket, { useMultiFileAuthState } from '@whiskeysockets/baileys'
 import WhatsAppEventHandler from './events/eventHandler'
 import WhatsAppCommandHandler from './commands/commandHandler'
 import assert from 'assert'
+import Settings from './utils/settings'
 
 export class WhatsAppBot {
-  authstate: Awaited<ReturnType<typeof useMultiFileAuthState>> | undefined
   eventHandler: WhatsAppEventHandler
   commandHandler: WhatsAppCommandHandler
+  settings = new Settings()
+
+  authstate: Awaited<ReturnType<typeof useMultiFileAuthState>> | undefined
   sock: ReturnType<typeof makeWASocket> | undefined
+
   participantes = new Map<string, Participante>()
   partidas = new Array<Partida>()
 
@@ -30,7 +34,7 @@ export class WhatsAppBot {
     // so if valid credentials are available -- it'll connect without QR
     this.sock = makeWASocket({
       auth: (this.authstate).state,
-      printQRInTerminal: process.env.NODE_ENV === 'development'
+      printQRInTerminal: true
     })
 
     this.eventHandler.updateEV()
