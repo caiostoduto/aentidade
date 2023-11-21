@@ -1,9 +1,8 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NODE_ENV: 'development' | 'production'
-      COORDENADORES: string
-      PREFIX: string
+      // NODE_ENV: 'development' | 'production'
+      SETTINGS_PATH: string
     }
   }
 }
