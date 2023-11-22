@@ -1,48 +1,49 @@
 import assert from 'assert'
-import { type WhatsAppBot, type Participante } from '../bot'
+import { type WhatsAppBot, type Participant } from '../bot'
 
-export async function reshuffleParticipante (bot: WhatsAppBot, participanteId: string, timeNum: number): Promise<void> {
-  const participantesPartida = bot.partidas[bot.partidas.length - 1].times
+export async function shuffleParticipante (bot: WhatsAppBot, participanteJid: string, timeNum: number): Promise<void> {
+  bot.matches[bot.matches.length - 1]?.teams[timeNum].delete(participanteJid)
+  bot.matches[bot.matches.length - 1]?._excluded.push(participanteJid)
+
+  const participantsMatch = bot.matches[bot.matches.length - 1].teams
     .map((t) => [...t.entries()].map((p) => p[0]))
     .reduce((a, b) => a.concat(b), [])
 
-  console.log(participantesPartida)
-
-  const otherParticipantes = [...bot.participantes.entries()]
+  // Not in match, not in excluded, participating
+  const outsideMatchParticipants = [...bot.participants.entries()]
     .filter((p) =>
-      !participantesPartida.includes(p[0]) &&
-      !bot.partidas[bot.partidas.length - 1]?._excluded.includes(p[0]) &&
-      p[1].participando
+      !participantsMatch.includes(p[0]) &&
+      !bot.matches[bot.matches.length - 1]?._excluded.includes(p[0]) &&
+      p[1].participating
     )
 
-  console.log(otherParticipantes)
-
-  const newParticipante = otherParticipantes
+  const newParticipant = outsideMatchParticipants
     .sort(() => Math.random() - 0.5)
     .sort((a, b) => a[1].queue - b[1].queue)[0]
 
-  console.log(newParticipante)
+  if (newParticipant !== undefined) {
+    bot.matches[bot.matches.length - 1].teams[timeNum]
+      .set(newParticipant[0], newParticipant[1])
 
-  bot.partidas[bot.partidas.length - 1]?.times[timeNum].delete(participanteId)
-  bot.partidas[bot.partidas.length - 1]?._excluded.push(participanteId)
-
-  if (newParticipante !== undefined) {
-    bot.partidas[bot.partidas.length - 1].times[timeNum].set(newParticipante[0], newParticipante[1])
-
-    await sendMessageConvocado(bot, newParticipante, timeNum)
+    await sendMessageConvocado(bot, newParticipant, timeNum)
   }
 }
 
-export async function sendMessageConvocado (bot: WhatsAppBot, participante: [string, Participante], timeNum: number): Promise<void> {
-  assert(bot.sock !== undefined)
+export async function sendMessageConvocado (bot: WhatsAppBot, participant: [string, Participant], teamNum: number): Promise<void> {
+  assert(bot.sock)
+
+  const participantjid = participant[0]
+  const participantName = participant[1].name
+  const participantsTeam = [...bot.matches[bot.matches.length - 1]
+    .teams[teamNum].entries()].map((p) => p[1].name).join(', ')
 
   await bot.sock.sendMessage(
-    participante[0], {
+    participantjid, {
       text:
-      `Olá, ${participante[1].nome}!! ✨\n` +
+      `Olá, ${participantName}!! ✨\n` +
       'Você foi convocado para jogar!\n\n' +
-      `Seu time (${timeNum + 1}) é: ${[...bot.partidas[bot.partidas.length - 1].times[timeNum].entries()].map((p) => p[1].nome).join(', ')}\n\n` +
-      'Caso deseje pular essa partida use o comando "*/pular*"\n' +
-      'Caso deseje sair da fila use o comando "*/sair*"'
+      `Seu time (${teamNum + 1}) é: ${participantsTeam}\n\n` +
+      'Caso deseje pular essa partida use o comando \'*/pular*\'\n' +
+      'Caso deseje sair da fila use o comando \'*/sair*\''
     })
 }

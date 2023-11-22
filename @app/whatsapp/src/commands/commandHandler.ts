@@ -1,8 +1,9 @@
 import { readdirSync, statSync } from 'fs'
 import { join } from 'path'
 import { type WhatsAppBot } from '../bot'
-import { type MessageUpsertType, type proto } from '@whiskeysockets/baileys'
+import { type proto } from '@whiskeysockets/baileys'
 import assert from 'assert'
+import { type MessagesUpsertEvent } from '../events/messages.upsert/messageHandler'
 
 export default class WhatsAppCommandHandler {
   bot: WhatsAppBot
@@ -49,23 +50,9 @@ export default class WhatsAppCommandHandler {
       await [...this.commands.values()]
         .reduce((acc, val) => acc.concat(val), [])
         .find((cmd) => cmd.enabled && cmd.name === text.split(' ')[0].slice(1))
-        ?.run(
-          msgInfo,
-          text.split(' '),
-          getRole(this.bot, msgInfo)
-        )
+        ?.run(msgInfo)
     }
   }
-}
-
-function getRole (bot: WhatsAppBot, msgInfo: proto.IWebMessageInfo): Roles {
-  const coordenadores = bot.settings.coordinators
-
-  if (coordenadores?.includes(msgInfo.key.participant as string)) {
-    return Roles.COORDENADOR
-  }
-
-  return Roles.PARTICIPANTE
 }
 
 type CommandCategory = string
@@ -73,12 +60,7 @@ type CommandCategory = string
 export interface WhatsAppCommand {
   name: string
   enabled: boolean
-  run: (msgInfo: proto.IWebMessageInfo, args: string[], role: Roles) => Promise<void>
-}
-
-export interface MessagesUpsertEvent {
-  messages: proto.IWebMessageInfo[]
-  type: MessageUpsertType
+  run: (msgInfo: proto.IWebMessageInfo) => Promise<void>
 }
 
 export enum Roles {

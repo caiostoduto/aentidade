@@ -12,6 +12,7 @@ export default class SaveCreds implements WhatsAppEvent {
 
   async handler (): Promise<void> {
     assert(this.bot.authstate?.saveCreds !== undefined)
+
     void (this.bot.authstate.saveCreds)()
   }
 }

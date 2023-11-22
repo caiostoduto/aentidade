@@ -15,14 +15,14 @@ export default class SaveCreds implements WhatsAppEvent {
     const { connection, lastDisconnect } = update
 
     if (connection === 'close') {
-      const shouldReconnect = (lastDisconnect?.error as Boom)?.output?.statusCode !==
-        DisconnectReason.loggedOut
+      const shouldReconnect = (lastDisconnect?.error as Boom)
+        ?.output?.statusCode !== DisconnectReason.loggedOut
 
       console.log('connection closed due to ', lastDisconnect?.error, ', reconnecting ', shouldReconnect)
 
       // reconnect if not logged out
       if (shouldReconnect) {
-        void this.bot.connect()
+        await this.bot.connect()
       }
     } else if (connection === 'open') {
       console.log('opened connection')

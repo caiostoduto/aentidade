@@ -15,7 +15,7 @@ export default class SaveCreds implements WhatsAppEvent {
   }
 }
 
-interface MessagesUpsertEvent {
+export interface MessagesUpsertEvent {
   messages: proto.IWebMessageInfo[]
   type: MessageUpsertType
 }

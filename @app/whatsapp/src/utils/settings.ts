@@ -24,7 +24,10 @@ export default class Settings {
       prefix: this.prefix
     }
 
-    writeFileSync(this.settingsPath, JSON.stringify(obj, null, 2))
+    writeFileSync(
+      this.settingsPath,
+      JSON.stringify(obj, null, 2)
+    )
   }
 }
 
