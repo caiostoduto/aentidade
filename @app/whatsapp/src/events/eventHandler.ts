@@ -2,7 +2,6 @@ import { readdirSync, statSync } from 'fs'
 import { join } from 'path'
 import { type WhatsAppBot } from '../bot'
 import { type BaileysEventMap } from '@whiskeysockets/baileys'
-import type makeWASocket from '@whiskeysockets/baileys'
 import assert from 'assert'
 
 export default class WhatsAppEventHandler {
@@ -35,7 +34,7 @@ export default class WhatsAppEventHandler {
     return this
   }
 
-  updateEV (): void {
+  update (): void {
     [...this.events.entries()].forEach((event) => {
       assert(this.bot.sock !== undefined);
 

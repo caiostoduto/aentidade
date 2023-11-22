@@ -5,20 +5,15 @@ import assert from 'assert'
 import Settings from './utils/settings'
 
 export class WhatsAppBot {
-  eventHandler: WhatsAppEventHandler
-  commandHandler: WhatsAppCommandHandler
   settings = new Settings()
+  commandHandler = new WhatsAppCommandHandler(this).loadAll()
+  eventHandler = new WhatsAppEventHandler(this).loadAll()
 
   authstate: Awaited<ReturnType<typeof useMultiFileAuthState>> | undefined
   sock: ReturnType<typeof makeWASocket> | undefined
 
-  participantes = new Map<string, Participante>()
-  partidas = new Array<Partida>()
-
-  constructor () {
-    this.commandHandler = new WhatsAppCommandHandler(this).loadAll()
-    this.eventHandler = new WhatsAppEventHandler(this).loadAll()
-  }
+  participants = new Map<string, Participant>()
+  matches = new Array<Match>()
 
   private async loadAuth (): Promise<void> {
     // utility function to help save the auth state in a single folder
@@ -28,6 +23,12 @@ export class WhatsAppBot {
 
   async connect (): Promise<void> {
     if (this.authstate === undefined) await this.loadAuth()
+
+    this._makeWASocket()
+    this.eventHandler.update()
+  }
+
+  private _makeWASocket (): void {
     assert(this.authstate !== undefined)
 
     // will use the given state to connect
@@ -36,20 +37,18 @@ export class WhatsAppBot {
       auth: (this.authstate).state,
       printQRInTerminal: true
     })
-
-    this.eventHandler.updateEV()
   }
 }
 
-type ParticipanteId = string
+type ParticipantJid = string
 
-export interface Participante {
-  nome: string
-  participando: boolean
+export interface Participant {
+  name: string
+  participating: boolean
   queue: number
 }
 
-export interface Partida {
-  times: Array<Map<ParticipanteId, Participante>>
-  _excluded: ParticipanteId[]
+export interface Match {
+  teams: Array<Map<ParticipantJid, Participant>>
+  _excluded: ParticipantJid[]
 }

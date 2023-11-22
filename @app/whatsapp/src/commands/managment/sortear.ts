@@ -1,8 +1,9 @@
+import assert from 'assert'
 import { type proto } from '@whiskeysockets/baileys'
 import { type WhatsAppBot } from '../../bot'
 import { Roles, type WhatsAppCommand } from '../commandHandler'
-import assert from 'assert'
 import { sendMessageConvocado } from '../../utils/misc'
+import { getRole } from '../../utils/command'
 
 export default class Sortear implements WhatsAppCommand {
   name = 'sortear'
@@ -13,33 +14,36 @@ export default class Sortear implements WhatsAppCommand {
     this.bot = bot
   }
 
-  async run (msgInfo: proto.IWebMessageInfo, args: string[], role: Roles): Promise<void> {
-    assert(this.bot.sock !== undefined && msgInfo.key.remoteJid)
+  async run (msgInfo: proto.IWebMessageInfo): Promise<void> {
+    assert(this.bot.sock !== undefined &&
+      msgInfo.key.remoteJid)
+
     await this.bot.sock.readMessages([msgInfo])
 
-    console.log([...this.bot.participantes.entries()])
+    const chatJid = msgInfo.key.remoteJid
+    const participantName = msgInfo.pushName as string
 
-    if (role !== Roles.COORDENADOR) {
+    if (getRole(this.bot, msgInfo) !== Roles.COORDENADOR) {
       await this.bot.sock.sendMessage(
-        msgInfo.key.remoteJid, {
+        chatJid, {
           text:
-          `Olá, ${msgInfo.pushName}!! ✨\n\n` +
+          `Olá, ${participantName}!! ✨\n\n` +
           'Você não tem permissão para usar esse comando!'
         })
 
       return
     }
 
-    let participantes = [...this.bot.participantes.entries()]
-      .filter((p) => p[1].participando)
+    let participantes = [...this.bot.participants.entries()]
+      .filter((p) => p[1].participating)
       .sort(() => Math.random() - 0.5)
       .sort((a, b) => a[1].queue - b[1].queue)
 
     if (participantes.length <= 1) {
       await this.bot.sock.sendMessage(
-        msgInfo.key.remoteJid, {
+        chatJid, {
           text:
-          `Olá, ${msgInfo.pushName}!! ✨\n\n` +
+          `Olá, ${participantName}!! ✨\n\n` +
           'Não há participantes suficientes para sortear!'
         })
 
@@ -56,17 +60,17 @@ export default class Sortear implements WhatsAppCommand {
     const time0 = participantes.slice(0, participantes.length / 2)
     const time1 = participantes.slice(participantes.length / 2)
 
-    this.bot.partidas.push({
-      times: [new Map(time0), new Map(time1)],
+    this.bot.matches.push({
+      teams: [new Map(time0), new Map(time1)],
       _excluded: []
     })
 
     await this.bot.sock.sendMessage(
-      msgInfo.key.remoteJid, {
+      chatJid, {
         text:
-        `Olá, ${msgInfo.pushName}!! ✨\n\n` +
-        `Time 1: ${time0.map((p) => p[1].nome).join(', ')}\n` +
-        `Time 2: ${time1.map((p) => p[1].nome).join(', ')}`
+        `Olá, ${participantName}!! ✨\n\n` +
+        `Time 1: ${time0.map((p) => p[1].name).join(', ')}\n` +
+        `Time 2: ${time1.map((p) => p[1].name).join(', ')}`
       })
 
     for (const [i, t] of [time0, time1].entries()) {
