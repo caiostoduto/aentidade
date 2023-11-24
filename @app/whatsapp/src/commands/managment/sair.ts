@@ -15,13 +15,12 @@ export default class Sair implements WhatsAppCommand {
 
   async run (msgInfo: proto.IWebMessageInfo): Promise<void> {
     assert(this.bot.sock !== undefined &&
-      (msgInfo.key.remoteJid != null) &&
-      (msgInfo.key.participant != null))
+      (msgInfo.key.remoteJid != null))
 
     await this.bot.sock.readMessages([msgInfo])
 
     const chatJid = msgInfo.key.remoteJid
-    const participantJid = msgInfo.key.participant
+    const participantJid = msgInfo.key.participant ?? msgInfo.key.remoteJid
     const participantName = msgInfo.pushName as string
 
     const participante = this.bot.participants.get(participantJid)
