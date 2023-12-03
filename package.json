@@ -8,7 +8,8 @@
   },
   "scripts": {
     "web": "pnpm --filter @aentidade/web",
-    "whatsapp": "pnpm --filter @aentidade/whatsapp"
+    "whatsapp": "pnpm --filter @aentidade/whatsapp",
+    "worker": "pnpm --filter @aentidade/worker"
   },
   "repository": {
     "type": "git",
