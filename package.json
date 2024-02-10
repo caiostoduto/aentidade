@@ -1,7 +1,9 @@
 {
   "name": "aentidade",
+  "author": "caiostoduto",
   "version": "0.1.0",
   "description": "",
+  "license": "MIT",
   "private": "true",
   "engines": {
     "pnpm": ">=8"
@@ -14,8 +16,6 @@
     "type": "git",
     "url": "git+https://github.com/caiostoduto/aentidade.git"
   },
-  "author": "caiostoduto",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/caiostoduto/aentidade/issues"
   },

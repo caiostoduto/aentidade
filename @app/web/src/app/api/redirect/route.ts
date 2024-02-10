@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
   return await returnKVResponse(query)
 }
 
-async function returnKVResponse(query: string) {
+async function returnKVResponse(query: string): Promise<Response> {
   const kv = process.env.REDIRECT;
   const value = await kv.get(query)
 

@@ -1,7 +1,14 @@
 {
   "name": "@aentidade/web",
+  "author": "caiostoduto",
   "version": "0.1.0",
-  "private": true,
+  "description": "",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "private": "true",
+  "engines": {
+    "pnpm": ">=8"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -32,5 +39,13 @@
     "typescript": "^5",
     "vercel": "^33.5.0",
     "wrangler": "^3.28.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiostoduto/aentidade.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caiostoduto/aentidade/issues"
+  },
+  "homepage": "https://github.com/caiostoduto/aentidade#readme"
 }
