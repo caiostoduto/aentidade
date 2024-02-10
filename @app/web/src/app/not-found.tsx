@@ -2,6 +2,8 @@
 
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, type ReactElement } from 'react'
+import Image from 'next/image'
+import './styles/not-found.css'
 
 export default function NotFound(): ReactElement<any, any> | void {
   const code = (usePathname() as string)?.slice(1)
@@ -16,26 +18,21 @@ export default function NotFound(): ReactElement<any, any> | void {
     })()
   }, [code])
 
-  useEffect(() => {
-    (async () => {
-      const { quantum } = await import('ldrs')
-      quantum.register()
-    })()
-  }, [])
-
   if (isLoading) return LoadingScreen()
   if (redirectURL) return window.location.replace(redirectURL)
 }
 
 function LoadingScreen(): ReactElement<any, any> {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen">
-      <l-quantum
-        size="75"
-        speed="1.75"
-        color="rgb(var(--foreground-rgb))"
-      ></l-quantum>
-    </div>
+    <main className="flex flex-col items-center justify-center w-full h-screen">
+      <Image
+        className='grow fixed'
+        src="/logo_transparente.svg"
+        width={75}
+        height={75}
+        alt="Picture of the author"
+      />
+    </main >
   )
 }
 
