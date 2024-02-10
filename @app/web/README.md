@@ -1,4 +1,4 @@
-My Personal Website + URL Shortner using [Next.js](https://nextjs.org/), [Cloudflare Pages](https://pages.cloudflare.com/) & [KVNamespace](https://developers.cloudflare.com/kv/learning/kv-namespaces/)
+aentidade website + URL Shortner using [Next.js](https://nextjs.org/), [Cloudflare Pages](https://pages.cloudflare.com/) & [KVNamespace](https://developers.cloudflare.com/kv/learning/kv-namespaces/)
 
 ## Features
 
@@ -9,30 +9,30 @@ My Personal Website + URL Shortner using [Next.js](https://nextjs.org/), [Cloudf
 
 ## Try it
 
-- https://caios.pages.dev/ (Default Redirect to https://github.com/caiostoduto)
-- https://caios.pages.dev/linkedin (Redirect to https://www.linkedin.com/in/caiostoduto/)
+- https://aentidade.pages.dev/ (Default Redirect to https://instagram.com/aentidade.ufabc/)
+- https://aentidade.pages.dev/bio (Redirect to https://beacons.ai/aentidade)
 
 ## Getting Started
 
 1. Clone the repository
 ```bash
-$ git clone git@github.com:caiostoduto/caios.pages.dev.git
-$ cd caios.pages.dev
+$ git clone git@github.com:caiostoduto/aentidade.git
+$ cd aentidade
 ```
 
 2. Install dependencies
 ```bash
-$ pnpm install
+$ pnpm web install
 ```
 
 3. [Create a new Cloudflare KVNamespace](https://developers.cloudflare.com/kv/get-started/#3-create-a-kv-namespace)
 ```bash
-$ pnpm wrangler kv:namespace create REDIRECT
+$ pnpm web wrangler kv:namespace create REDIRECT
 ```
 
 4. Deploy the worker
 ```bash
-$ pnpx run pages:deploy
+$ pnpx web run pages:deploy
 ```
 
 5. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces)

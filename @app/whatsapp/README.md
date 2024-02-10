@@ -22,6 +22,7 @@ aentidade [WhatsApp](https://whatsapp.com/) bot using [Baileys](https://github.c
 1. Clone the repository
 ```bash
 $ git clone git@github.com:caiostoduto/aentidade.git
+$ cd aentidade
 ```
 
 2. Install dependencies
