@@ -1,4 +1,4 @@
-[aentidade](https://instagram.com/aentidade.ufabc/) monorepo
+[aentidade](https://aentidade.pages.dev) monorepo
 
 # Features
 
