@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Bio() {
   return (
-    <main className='flex flex-col items-center justify-center w-full px-[20px] py-16'>
+    <main className='flex flex-col items-center justify-center w-full px-[20px] pt-16'>
       <Head>
         <title>Bio</title>
       </Head>
@@ -133,6 +133,16 @@ export default function Bio() {
           loading="lazy"
         />
       </section>
+
+      <footer className='my-8 text-center  opacity-80'>
+        <a href='https://caios.pages.dev/'>
+          Feito por Caio Stoduto ❤️
+        </a>
+
+        <p>
+          aentidade © 2024
+        </p>
+      </footer>
     </main>
   );
 }
