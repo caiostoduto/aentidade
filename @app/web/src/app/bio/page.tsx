@@ -58,7 +58,7 @@ export default function Bio() {
       </header>
 
       <section className='mt-4 grid place-items-center max-w-[560px] w-full text-center'>
-        <a
+        <Link
           href='https://aentidade.pages.dev/participe'
           className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
 
@@ -67,9 +67,9 @@ export default function Bio() {
               Faça parte!
             </span>
           </div>
-        </a>
+        </Link>
 
-        <a
+        <Link
           href='https://aentidade.pages.dev/calendário'
           className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
           <Image
@@ -85,9 +85,9 @@ export default function Bio() {
               Nosso Calendário
             </span>
           </div>
-        </a>
+        </Link>
 
-        <a
+        <Link
           href='https://aentidade.pages.dev/comentário'
           className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
           <Image
@@ -103,9 +103,9 @@ export default function Bio() {
               Denúncias, Elogios e Sugestões
             </span>
           </div>
-        </a>
+        </Link>
 
-        <a
+        <Link
           href='https://aentidade.pages.dev/normas'
           className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
           <Image
@@ -121,7 +121,7 @@ export default function Bio() {
               Normas aentidade
             </span>
           </div>
-        </a>
+        </Link>
       </section>
 
       <section className='mt-6 max-w-[560px] w-full'>
@@ -135,7 +135,7 @@ export default function Bio() {
       </section>
 
       <footer className='my-8 text-center opacity-80'>
-        <a href='https://caios.pages.dev/' className='flex'>
+        <Link href='https://caios.pages.dev/' className='flex'>
           <span>
             Feito por Caio Stoduto
           </span>
@@ -146,7 +146,7 @@ export default function Bio() {
             height={25}
             alt="aentidade logo"
           />
-        </a>
+        </Link>
 
         <span>
           aentidade © 2024
