@@ -60,34 +60,67 @@ export default function Bio() {
       <section className='mt-4 grid place-items-center max-w-[560px] w-full text-center'>
         <a
           href='https://aentidade.pages.dev/participe'
-          className='mb-4 border-2 p-[17.5px] rounded-2xl w-full bg-gray-800/20'>
-          <span className=''>
-            Faça parte!
-          </span>
+          className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
+
+          <div className='m-[17.5px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
+            <span className='relative'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
+              Faça parte!
+            </span>
+          </div>
         </a>
 
         <a
           href='https://aentidade.pages.dev/calendário'
-          className='mb-4 border-2 p-[17.5px] rounded-2xl w-full bg-gray-800/20'>
-          <span>
-            Nosso Calendário
-          </span>
+          className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
+          <Image
+            className='relative ms-[17.5px]'
+            src="/icons/google_calendar.svg"
+            width={32}
+            height={32}
+            alt="Ícone do Google Calendar"
+          />
+
+          <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
+            <span className='relative left-[-49.5px]'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
+              Nosso Calendário
+            </span>
+          </div>
         </a>
 
         <a
           href='https://aentidade.pages.dev/comentário'
-          className='mb-4 border-2 p-[17.5px] rounded-2xl w-full bg-gray-800/20'>
-          <span>
-            Denúncias, Elogios e Sugestões
-          </span>
+          className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
+          <Image
+            className='relative ms-[17.5px] left-1'
+            src="/icons/google_forms.svg"
+            width={28}
+            height={59}
+            alt="Ícone do Google Forms"
+          />
+
+          <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[63px] = m-[17.5px] + left-[45.5] */}
+            <span className='relative left-[-49.5px]'> {/* left-[-45.5px] = img_width-[28] + m-[17.5px] + img_left-[4px]*/}
+              Denúncias, Elogios e Sugestões
+            </span>
+          </div>
         </a>
 
         <a
           href='https://aentidade.pages.dev/normas'
-          className='mb-4 border-2 p-[17.5px] rounded-2xl w-full bg-gray-800/20'>
-          <span>
-            Normas aentidade
-          </span>
+          className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
+          <Image
+            className='relative ms-[17.5px] left-1'
+            src="/icons/google_docs.svg"
+            width={28}
+            height={59}
+            alt="Ícone do Google Docs"
+          />
+
+          <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[63px] = m-[17.5px] + left-[45.5] */}
+            <span className='relative left-[-49.5px]'> {/* left-[-45.5px] = img_width-[28] + m-[17.5px] + img_left-[4px]*/}
+              Normas aentidade
+            </span>
+          </div>
         </a>
       </section>
 
