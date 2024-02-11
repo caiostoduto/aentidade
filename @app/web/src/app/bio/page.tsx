@@ -22,7 +22,7 @@ export default function Bio() {
           aentidade
         </span>
 
-        <div className='flex mt-2 mb-2'>
+        <div className='flex mt-2 mb-2 opacity-80'>
           <Image
             className='relative me-[2px]'
             src="/icons/pin.svg"
@@ -30,7 +30,7 @@ export default function Bio() {
             width={14}
             alt="Ícone de pin"
           />
-          <span className='text-[14px] opacity-80'>
+          <span className='text-[14px]'>
             Santo André, UFABC
           </span>
         </div>
