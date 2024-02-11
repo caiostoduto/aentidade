@@ -7,7 +7,7 @@ declare global {
       // KV Example:
       // MY_KV: KVNamespace
       REDIRECT: KVNamespace
-      NEXT_PUBLIC_GA: string
+      NEXT_PUBLIC_GA: string | undefined
     }
   }
 }

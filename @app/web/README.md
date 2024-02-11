@@ -5,12 +5,13 @@ aentidade website + URL Shortner using [Next.js](https://nextjs.org/), [Cloudfla
 - [x] URL Shortner
 - [x] Configurable Redirects *(using Cloudflare KVNamespace)*
 - [x] Configurable Default Redirect *(app/not-found.tsx)*
+- [x] (*Link in Bio*)[https://aentidade.pages.dev/bio]
 - [ ] *Homepage*
 
 ## Try it
 
-- https://aentidade.pages.dev/ (Default Redirect to https://instagram.com/aentidade.ufabc/)
-- https://aentidade.pages.dev/bio (Redirect to https://beacons.ai/aentidade)
+- https://aentidade.pages.dev/ (Default redirect > https://instagram.com/aentidade.ufabc/)
+- https://aentidade.pages.dev/bio (Link in Bio)
 
 ## Getting Started
 
@@ -37,9 +38,15 @@ $ pnpm web run pages:deploy
 
 5. [Enable Node.js from the Cloudflare dashboard](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#enable-nodejs-from-the-cloudflare-dashboard)
 
-6. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces) (Repeat step 4 after)
+6. (Optional) [Add environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard)
 
-7. Add your redirect routes to the KVNamespace *(suggest using [Cloudflare KVNamespace Dashboard](https://dash.cloudflare.com/))*\
+| Name | Value |
+|------|-------|
+| NEXT_PUBLIC_GA | `google_analytics_id` |
+
+7. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces) (Repeat step 4 after)
+
+8. Add your redirect routes to the KVNamespace *(suggest using [Cloudflare KVNamespace Dashboard](https://dash.cloudflare.com/))*\
 **must include '/' (default) route**
 
-![Image from Cloudflare Pages Dashboard setting kv routes](https://github.com/caiostoduto/caios.pages.dev/blob/main/docs/images/kv.jpeg)
+![Image from Cloudflare Pages Dashboard setting kv routes](https://github.com/caiostoduto/aentidade/blob/main/@app/web/docs/images/kv.jpeg)
