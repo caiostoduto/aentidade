@@ -2,7 +2,7 @@ aentidade website + URL Shortner using [Next.js](https://nextjs.org/), [Cloudfla
 
 ## Features
 
-- [x] URL Shortner
+- [x] URL Shortener
 - [x] Configurable Redirects *(using Cloudflare KVNamespace)*
 - [x] Configurable Default Redirect *(app/not-found.tsx)*
 - [x] (*Link in Bio*)[https://aentidade.pages.dev/bio]
