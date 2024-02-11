@@ -134,14 +134,23 @@ export default function Bio() {
         />
       </section>
 
-      <footer className='my-8 text-center  opacity-80'>
-        <a href='https://caios.pages.dev/'>
-          Feito por Caio Stoduto ❤️
+      <footer className='my-8 text-center opacity-80'>
+        <a href='https://caios.pages.dev/' className='flex'>
+          <span>
+            Feito por Caio Stoduto
+          </span>
+          <Image
+            className='ps-1'
+            src="/icons/heart.svg"
+            width={25}
+            height={25}
+            alt="aentidade logo"
+          />
         </a>
 
-        <p>
+        <span>
           aentidade © 2024
-        </p>
+        </span>
       </footer>
     </main>
   );
