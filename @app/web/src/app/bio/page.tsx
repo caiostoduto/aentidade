@@ -13,8 +13,8 @@ export default function Bio() {
         <Image
           className='relative pb-[20px]'
           src="/logo_transparente.svg"
-          width={100}
-          height={100}
+          width={115}
+          height={115}
           alt="aentidade logo"
         />
 
@@ -127,7 +127,7 @@ export default function Bio() {
       <section className='mt-6 max-w-[560px] w-full'>
         <iframe
           src='https://open.spotify.com/embed/playlist/4ONy8cyUkojEkYOWAHR0Fe?utm_source=generator&theme=0'
-          className='rounded-2xl w-full'
+          className='rounded-2xl w-full bg-[#282828]'
           height={500}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
