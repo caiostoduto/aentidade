@@ -91,10 +91,10 @@ export default function Bio() {
           href='https://aentidade.pages.dev/comentário'
           className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
           <Image
-            className='relative ms-[17.5px] left-1'
-            src="/icons/google_forms.svg"
-            width={28}
-            height={59}
+            className='relative ms-[17.5px]'
+            src="/icons/typeform.svg"
+            width={32}
+            height={21.3}
             alt="Ícone do Google Forms"
           />
 
