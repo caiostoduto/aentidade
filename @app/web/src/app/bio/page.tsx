@@ -1,8 +1,18 @@
+'use client'
+
 import Head from 'next/head';
 import Image from "next/image";
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Bio() {
+  const [showCalendar, setShowCalendar] = useState(false)
+
+  function toggleShowCalendar() {
+    setShowCalendar(!showCalendar)
+  }
+
+
   return (
     <main className='flex flex-col items-center justify-center w-full px-[20px] pt-16'>
       <Head>
@@ -69,23 +79,33 @@ export default function Bio() {
           </div>
         </Link>
 
-        <Link
-          href='https://aentidade.pages.dev/calendário'
-          className='flex items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20'>
-          <Image
-            className='relative ms-[17.5px]'
-            src="/icons/google_calendar.svg"
-            width={32}
-            height={32}
-            alt="Ícone do Google Calendar"
-          />
+        <button
+          className='items-center mb-4 border-2 rounded-2xl w-full bg-gray-800/20 overflow-hidden'
+          onClick={toggleShowCalendar}
+        >
+          <div className='flex'>
+            <Image
+              className='relative ms-[17.5px]'
+              src="/icons/google_calendar.svg"
+              width={32}
+              height={32}
+              alt="Ícone do Google Calendar"
+            />
 
-          <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
-            <span className='relative left-[-49.5px]'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
-              Nosso Calendário
-            </span>
+            <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
+              <span className='relative left-[-49.5px]'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
+                Nosso Calendário
+              </span>
+            </div>
           </div>
-        </Link>
+
+
+          <div
+            className='overflow-hidden transition-all duration-300 bg-[var(--secondary-rgb)]'
+            style={{ height: showCalendar ? 300 : 0 }}>
+            <iframe src={`https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=America%2FSao_Paulo&bgcolor=%23134337&showTitle=0&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=${process.env.NEXT_PUBLIC_CALENDAR}&color=%23039BE5`} height="300" className='w-full'></iframe>
+          </div>
+        </button>
 
         <Link
           href='https://aentidade.pages.dev/comentário'
