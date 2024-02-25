@@ -144,10 +144,12 @@ export default function Bio() {
         </Link>
       </section>
 
-      <section className='mt-6 max-w-[560px] w-full'>
+      <section className='relative mt-6 max-w-[560px] w-full h-[500px] bg-[#282828] rounded-2xl overflow-hidden'>
+        <div className='static mt-[200px] z-10 w-full h-[300px] bg-[#242424]'></div>
+
         <iframe
           src='https://open.spotify.com/embed/playlist/4ONy8cyUkojEkYOWAHR0Fe?utm_source=generator&theme=0'
-          className='rounded-2xl w-full bg-[#282828]'
+          className='absolute top-0 z-0 w-full'
           height={500}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
