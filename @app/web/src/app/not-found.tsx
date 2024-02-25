@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Head from 'next/head';
 import { useState, useEffect, type ReactElement } from 'react'
 import Image from 'next/image'
-import './styles/not-found.css'
+import '../styles/not-found.css'
 
 export default function NotFound(): ReactElement<any, any> | void {
   const code = (usePathname() as string)?.slice(1)
