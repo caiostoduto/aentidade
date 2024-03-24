@@ -19,26 +19,26 @@
     "pages:deploy": "pnpm pages:build && wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
-    "@next/third-parties": "^14.1.0",
+    "@next/third-parties": "^14.1.4",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.9.0",
-    "@cloudflare/workers-types": "^4.20240222.0",
-    "@types/node": "^20.11.20",
-    "@types/react": "^18.2.58",
-    "@types/react-dom": "^18.2.19",
-    "autoprefixer": "^10.4.17",
+    "@cloudflare/next-on-pages": "^1.11.0",
+    "@cloudflare/workers-types": "^4.20240320.1",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.69",
+    "@types/react-dom": "^18.2.22",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.0",
-    "eslint-plugin-next-on-pages": "^1.9.0",
-    "postcss": "^8.4.35",
+    "eslint-plugin-next-on-pages": "^1.11.0",
+    "postcss": "^8.4.38",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3",
-    "vercel": "^33.5.2",
-    "wrangler": "^3.29.0"
+    "typescript": "^5.4.3",
+    "vercel": "^33.6.1",
+    "wrangler": "^3.37.0"
   },
   "repository": {
     "type": "git",
