@@ -14,6 +14,6 @@
 
 - [x] URL Shortner
 - [x] Configurable Redirects *(using Cloudflare KVNamespace)*
-- [x] Configurable Default Redirect *(app/not-found.tsx)*
+- [x] Configurable Default Redirect *[app/not-found.tsx](https://github.com/caiostoduto/aentidade/blob/main/%40app/web/src/app/not-found.tsx)*
 - [x] [*Link in Bio*](https://aentidade.pages.dev/bio)
 - [ ] *Homepage*
