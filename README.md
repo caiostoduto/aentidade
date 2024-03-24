@@ -1,19 +1,19 @@
 [aentidade](https://aentidade.pages.dev) monorepo
 
-# Features
+# features
 
-## [WhatsApp Bot](https://github.com/caiostoduto/aentidade/tree/main/@app/whatsapp)
+## [whatsApp bot](https://github.com/caiostoduto/aentidade/tree/main/@app/whatsapp)
 
-- [x] Shuffling participants to create equivalent teams
-- [x] Notifies participants of their team
-- [x] Notifies participants of the next round
-- [x] Option to left or skip the current round
-- [x] Every participant play the same amount of games
+- [x] shuffling participants to create equivalent teams
+- [x] notifies participants of their team
+- [x] notifies participants of the next round
+- [x] option to left or skip the current round
+- [x] every participant play the same amount of games
 
-## [Webiste](https://github.com/caiostoduto/aentidade/tree/main/@app/web)
+## [webiste](https://github.com/caiostoduto/aentidade/tree/main/@app/web)
 
-- [x] URL Shortner
-- [x] Configurable Redirects *(using Cloudflare KVNamespace)*
-- [x] Configurable Default Redirect *[app/not-found.tsx](https://github.com/caiostoduto/aentidade/blob/main/%40app/web/src/app/not-found.tsx)*
-- [x] [*Link in Bio*](https://aentidade.pages.dev/bio)
-- [ ] *Homepage*
+- [x] url shortner
+- [x] configurable redirects *(using cloudflare kvnamespace)*
+- [x] configurable default redirect *[app/not-found.tsx](https://github.com/caiostoduto/aentidade/blob/main/%40app/web/src/app/not-found.tsx)*
+- [x] [*link in bio*](https://aentidade.pages.dev/bio)
+- [ ] *homepage*
