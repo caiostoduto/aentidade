@@ -8,6 +8,7 @@ declare global {
       // MY_KV: KVNamespace
       REDIRECT: KVNamespace
       NEXT_PUBLIC_CALENDAR: string | undefined
+      SENTRY_DNS: string | undefined
     }
   }
 }

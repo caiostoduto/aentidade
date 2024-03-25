@@ -37,3 +37,5 @@ next-env.d.ts
 
 # wrangler
 .wrangler
+# Sentry Config File
+.sentryclirc

@@ -38,9 +38,17 @@ $ pnpm web run pages:deploy
 
 5. [Enable Node.js from the Cloudflare dashboard](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#enable-nodejs-from-the-cloudflare-dashboard)
 
-6. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces) (Repeat step 4 after)
+6. [Add environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard)
 
-7. Add your redirect routes to the KVNamespace *(suggest using [Cloudflare KVNamespace Dashboard](https://dash.cloudflare.com/))*\
+| Name | Value |
+|------|-------|
+| NEXT_PUBLIC_CALENDAR | `google_calendar_id` |
+| SENTRY_AUTH_TOKEN | `sentry_auth_token` |
+| SENTRY_DNS | `sentry_dns` |
+
+7. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces) (Repeat step 4 after)
+
+8. Add your redirect routes to the KVNamespace *(suggest using [Cloudflare KVNamespace Dashboard](https://dash.cloudflare.com/))*\
 **must include '/' (default) route**
 
 ![Image from Cloudflare Pages Dashboard setting kv routes](https://github.com/caiostoduto/aentidade/blob/main/@app/web/docs/images/kv.jpeg)
