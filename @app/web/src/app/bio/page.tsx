@@ -41,7 +41,7 @@ export default function Bio() {
             alt="Ícone de pin"
           />
           <span className='text-[14px]'>
-            santo andré, ufabc
+            Santo André, UFABC
           </span>
         </div>
 
@@ -74,7 +74,7 @@ export default function Bio() {
 
           <div className='m-[17.5px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
             <span className='relative'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
-              faça parte!
+              Faça Parte!
             </span>
           </div>
         </Link>
@@ -94,7 +94,7 @@ export default function Bio() {
 
             <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[67px] = m-[17.5px] + left-[49.5] */}
               <span className='relative left-[-49.5px]'> {/* left-[-49.5px] = img_width-[32] + m-[17.5px] */}
-                nosso calendário
+                Nosso Calendário
               </span>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function Bio() {
 
           <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[63px] = m-[17.5px] + left-[45.5] */}
             <span className='relative left-[-49.5px]'> {/* left-[-45.5px] = img_width-[28] + m-[17.5px] + img_left-[4px]*/}
-              denúncias, elogios e sugestões
+              Denúncias, Elogios e Sugestões
             </span>
           </div>
         </Link>
@@ -138,7 +138,7 @@ export default function Bio() {
 
           <div className='m-[17.5px] ms-[67px] w-full'> {/* ms-[63px] = m-[17.5px] + left-[45.5] */}
             <span className='relative left-[-49.5px]'> {/* left-[-45.5px] = img_width-[28] + m-[17.5px] + img_left-[4px]*/}
-              normas aentidade
+              Normas aentidade
             </span>
           </div>
         </Link>
@@ -159,7 +159,7 @@ export default function Bio() {
       <footer className='my-8 text-center opacity-80'>
         <Link href='https://caios.pages.dev/' className='flex'>
           <span>
-            feito por caio stoduto
+            Feito pelo Caio Stoduto
           </span>
           <Image
             className='ps-1'
