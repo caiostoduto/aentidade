@@ -1,22 +1,22 @@
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import '../styles/globals.css'
+import "../styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'aentidade',
-  description: 'Site Oficial da aentidade'
-}
+	title: "aentidade",
+	description: "Site Oficial da aentidade",
+};
 
 export default function RootLayout({
-  children
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+	return (
+		<html lang="pt-BR">
+			<body className={inter.className}>{children}</body>
+		</html>
+	);
 }
