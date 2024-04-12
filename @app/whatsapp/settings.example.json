@@ -1,4 +1,4 @@
 {
-  "coordinators":["<your_number>@s.whatsapp.net"],
-  "prefix":"/"
+	"coordinators": ["<your_number>@s.whatsapp.net"],
+	"prefix": "/"
 }

@@ -1,4 +1,4 @@
-import 'dotenv/config'
-import { WhatsAppBot } from './bot'
+import "dotenv/config";
+import { WhatsAppBot } from "./bot";
 
-void new WhatsAppBot().connect()
+void new WhatsAppBot().connect();

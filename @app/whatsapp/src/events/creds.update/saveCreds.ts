@@ -1,18 +1,18 @@
-import assert from 'assert'
-import { type WhatsAppBot } from '../../bot'
-import { type WhatsAppEvent } from '../eventHandler'
+import assert from "node:assert";
+import type { WhatsAppBot } from "../../bot";
+import type { WhatsAppEvent } from "../eventHandler";
 
 export default class SaveCreds implements WhatsAppEvent {
-  enabled = true
-  bot: WhatsAppBot
+	enabled = true;
+	bot: WhatsAppBot;
 
-  constructor (bot: WhatsAppBot) {
-    this.bot = bot
-  }
+	constructor(bot: WhatsAppBot) {
+		this.bot = bot;
+	}
 
-  async handler (): Promise<void> {
-    assert(this.bot.authstate?.saveCreds !== undefined)
+	async handler(): Promise<void> {
+		assert(this.bot.authstate?.saveCreds !== undefined);
 
-    void (this.bot.authstate.saveCreds)()
-  }
+		void this.bot.authstate.saveCreds();
+	}
 }
