@@ -128,9 +128,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-# Baileys credentials
-auth_info_baileys
-
-# Settings
-settings.json
