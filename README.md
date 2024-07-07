@@ -11,7 +11,7 @@
 - [ ] *Homepage*
 
 
-## [WhatsApp Bot](https://github.com/caiostoduto/aentidade/tree/main/@app/whatsapp) (Deprecated)
+## [WhatsApp Bot](https://github.com/caiostoduto/aentidade/tree/whatsapp/%40app/whatsapp) (Deprecated)
 
 - [x] Shuffling participants to create equivalent teams
 - [x] Notifies participants of their team
