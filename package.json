@@ -5,11 +5,9 @@
 	"description": "",
 	"license": "MIT",
 	"private": "true",
-	"engines": {
-		"pnpm": ">=8"
-	},
+	"workspaces": ["@app/*"],
 	"scripts": {
-		"web": "pnpm --filter @aentidade/web"
+		"web": "bun run --cwd @app/web"
 	},
 	"repository": {
 		"type": "git",
@@ -18,5 +16,9 @@
 	"bugs": {
 		"url": "https://github.com/caiostoduto/aentidade/issues"
 	},
-	"homepage": "https://github.com/caiostoduto/aentidade#readme"
+	"homepage": "https://github.com/caiostoduto/aentidade#readme",
+	"trustedDependencies": ["@biomejs/biome", "@sentry/cli"],
+	"dependencies": {
+		"@cloudflare/workers-types": "^4.20240815.0"
+	}
 }

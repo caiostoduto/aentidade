@@ -14,9 +14,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"pages:build": "pnpm next-on-pages",
-		"pages:preview": "pnpm pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-02-08 --compatibility-flag=nodejs_compat",
-		"pages:deploy": "pnpm pages:build && wrangler pages deploy .vercel/output/static"
+		"pages:build": "bun run next-on-pages",
+		"pages:preview": "bun run pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-02-08 --compatibility-flag=nodejs_compat",
+		"pages:deploy": "bun run pages:build && wrangler pages deploy .vercel/output/static"
 	},
 	"dependencies": {
 		"@next/third-parties": "^14.1.4",
@@ -28,7 +28,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.6.4",
 		"@cloudflare/next-on-pages": "^1.11.0",
-		"@cloudflare/workers-types": "^4.20240329.0",
+		"@cloudflare/workers-types": "^4.20240815.0",
 		"@types/node": "^20.12.2",
 		"@types/react": "^18.2.73",
 		"@types/react-dom": "^18.2.23",
