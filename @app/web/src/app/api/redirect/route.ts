@@ -1,5 +1,6 @@
 // Next.js Edge API Route Handlers: https://nextjs.org/docs/app/building-your-application/routing/router-handlers#edge-and-nodejs-runtimes
 
+import { getRequestContext } from "@cloudflare/next-on-pages";
 import type { NextRequest } from "next/server";
 
 export const runtime = "edge";
@@ -28,7 +29,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 }
 
 async function returnKVResponse(query: string): Promise<Response> {
-	const kv = process.env.REDIRECT;
+	const kv = getRequestContext().env.REDIRECT;
 	const value = await kv.get(query);
 
 	if (value !== null) {
