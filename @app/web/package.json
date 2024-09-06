@@ -6,9 +6,6 @@
 	"main": "src/index.ts",
 	"license": "MIT",
 	"private": "true",
-	"engines": {
-		"pnpm": ">=8"
-	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

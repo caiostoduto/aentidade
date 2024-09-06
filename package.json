@@ -1,32 +1,27 @@
 {
-  "name": "aentidade",
-  "author": "caiostoduto",
-  "version": "0.1.0",
-  "description": "",
-  "license": "MIT",
-  "private": "true",
-  "workspaces": [
-    "@app/*"
-  ],
-  "scripts": {
-    "web": "bun run --cwd @app/web"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caiostoduto/aentidade.git"
-  },
-  "bugs": {
-    "url": "https://github.com/caiostoduto/aentidade/issues"
-  },
-  "homepage": "https://github.com/caiostoduto/aentidade#readme",
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "@sentry/cli",
-    "esbuild",
-    "workerd"
-  ],
-  "dependencies": {
-    "@cloudflare/workers-types": "^4.20240815.0"
-  },
-  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+	"name": "aentidade",
+	"author": "caiostoduto",
+	"version": "0.1.0",
+	"description": "",
+	"license": "MIT",
+	"private": "true",
+	"workspaces": ["@app/*"],
+	"scripts": {
+		"web": "bun run --cwd @app/web"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caiostoduto/aentidade.git"
+	},
+	"bugs": {
+		"url": "https://github.com/caiostoduto/aentidade/issues"
+	},
+	"homepage": "https://github.com/caiostoduto/aentidade#readme",
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"@sentry/cli",
+		"esbuild",
+		"workerd"
+	],
+	"dependencies": {}
 }
