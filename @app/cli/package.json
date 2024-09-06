@@ -1,0 +1,24 @@
+{
+	"name": "@aentidade/cli",
+	"author": "caiostoduto",
+	"version": "0.1.0",
+	"description": "",
+	"module": "src/index.ts",
+	"license": "MIT",
+	"type": "module",
+	"private": "true",
+	"homepage": "https://github.com/caiostoduto/aentidade#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caiostoduto/aentidade.git"
+	},
+	"bugs": {
+		"url": "https://github.com/caiostoduto/aentidade/issues"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	}
+}
