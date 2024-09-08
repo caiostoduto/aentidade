@@ -11,28 +11,29 @@ export async function GET(request: NextRequest): Promise<Response> {
 	//    - https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/#use-bindings-in-your-nextjs-application
 	//    - https://developers.cloudflare.com/pages/functions/bindings/
 	// )
-	//
-	// KV Example:
-	// const myKv = process.env.MY_KV
-	// await myKv.put('suffix', ' from a KV store!')
-	// const suffix = await myKv.get('suffix')
-	// responseText += suffix
 
+	// Get the query from the URL
 	const url = new URL(request.url);
 	let query = url.searchParams.get("q")?.toLocaleLowerCase();
 
+	// If the query is empty, return the default redirect
 	if (query === undefined || query === "") {
 		query = "/"; // return new Response('Missing query', { status: 400 })
 	}
 
+	// Return the redirect URL
 	return await returnKVResponse(query);
 }
 
 async function returnKVResponse(query: string): Promise<Response> {
+	// Get the redirect URL from the KV namespace
 	const kv = getRequestContext().env.REDIRECT;
+	// Get the value from the KV namespace
 	const value = await kv.get(query);
 
+	// If the value is not null, return the redirect URL
 	if (value !== null) {
+		// Return the redirect URL
 		return new Response(
 			JSON.stringify({
 				url: value,
@@ -42,9 +43,11 @@ async function returnKVResponse(query: string): Promise<Response> {
 		);
 	}
 
+	// If the query is not the default redirect, return the default redirect
 	if (query !== "/") {
 		return await returnKVResponse("/");
 	}
 
+	// If query === "/" and the value is null, return a 404
 	return new Response("Not found", { status: 404 });
 }
