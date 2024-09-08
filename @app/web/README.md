@@ -42,8 +42,6 @@ $ pnpm web run pages:deploy
 
 | Name | Value |
 |------|-------|
-| NEXT_PUBLIC_CALENDAR | `google_calendar_id` |
-| SENTRY_AUTH_TOKEN | `sentry_auth_token` |
 | SENTRY_DNS | `sentry_dns` |
 
 7. [Bind your KV namespace to your Pages Function](https://developers.cloudflare.com/pages/functions/bindings/#kv-namespaces) (Repeat step 4 after)
