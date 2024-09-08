@@ -27,7 +27,7 @@ function LoadingScreen(): ReactElement {
 	return (
 		<main className="flex flex-col items-center justify-center w-full h-screen">
 			<Head>
-				<title>Redirecting...</title>
+				<title>Redirecionando...</title>
 			</Head>
 
 			<Image
