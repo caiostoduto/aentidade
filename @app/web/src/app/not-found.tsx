@@ -32,10 +32,10 @@ function LoadingScreen(): ReactElement {
 
 			<Image
 				className="grow fixed"
-				src="/logo_transparente.svg"
+				src="/logo.svg"
 				width={85}
 				height={85}
-				alt="Picture of the author"
+				alt="Logo aentidade"
 			/>
 		</main>
 	);
