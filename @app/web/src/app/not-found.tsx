@@ -1,10 +1,9 @@
 "use client";
 
-import Head from "next/head";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { type ReactElement, type ReactNode, useEffect, useState } from "react";
-import "../styles/not-found.css";
+
+import LoadingAnimation from "@/components/loading";
 
 export default function NotFound(): ReactNode {
 	const code = (usePathname() as string)?.slice(1);
@@ -26,17 +25,9 @@ export default function NotFound(): ReactNode {
 function LoadingScreen(): ReactElement {
 	return (
 		<main className="flex flex-col items-center justify-center w-full h-screen">
-			<Head>
-				<title>Redirecionando...</title>
-			</Head>
+			<title>Redirecionando...</title>
 
-			<Image
-				className="grow fixed"
-				src="/logo.svg"
-				width={85}
-				height={85}
-				alt="Logo aentidade"
-			/>
+			<LoadingAnimation />
 		</main>
 	);
 }
