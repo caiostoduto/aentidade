@@ -6,20 +6,15 @@ import { type ReactElement, type ReactNode, useEffect, useState } from "react";
 import LoadingAnimation from "@/components/loading";
 
 export default function NotFound(): ReactNode {
-	const code = (usePathname() as string)?.slice(1);
-	const [redirectURL, setRedirectURL] = useState<string | null>(null);
-	const [isLoading, setLoading] = useState<boolean>(true);
+	const code = usePathname().slice(1);
 
 	useEffect(() => {
-		(async () => {
-			const url = await fetchRedirectURL(code);
-			setRedirectURL(url);
-			setLoading(false);
-		})();
+		fetchRedirectURL(code).then((url) =>
+			url ? window.location.replace(url) : undefined,
+		);
 	}, [code]);
 
-	if (isLoading) return LoadingScreen();
-	if (redirectURL) window.location.replace(redirectURL);
+	return LoadingScreen();
 }
 
 function LoadingScreen(): ReactElement {
@@ -30,10 +25,6 @@ function LoadingScreen(): ReactElement {
 			<LoadingAnimation />
 		</main>
 	);
-}
-
-interface FetchRedirectURLResponse {
-	url?: string;
 }
 
 async function fetchRedirectURL(code: string): Promise<string | null> {
@@ -49,4 +40,8 @@ async function fetchRedirectURL(code: string): Promise<string | null> {
 	} catch (e) {
 		return null;
 	}
+}
+
+interface FetchRedirectURLResponse {
+	url?: string;
 }
