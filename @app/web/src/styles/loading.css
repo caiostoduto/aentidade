@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .loading-container {
+    @apply w-[30dvh] h-[31.5dvh]
+  }
+
+  .circle-container {
+    @apply absolute w-[100%] h-[100%];
+  }
+
+  .circle {
+    @apply w-full h-full rounded-full;
+    @apply border-solid border-r-0 border-t-0 border-l-[1.5dvh] border-b-[1.5dvh];
+  }
+
+  .primary-color {
+    @apply border-[#f5d248b3];
+    @apply shadow-[inset_0_0_3dvh_#f5d24826];
+  }
+  
+  .secondary-color {
+    @apply border-[#ffffffb3];
+    @apply  shadow-[inset_0_0_3dvh_#ffffff26];
+  }
+}
