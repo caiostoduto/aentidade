@@ -19,11 +19,13 @@ export default function NotFound(): ReactNode {
 
 function LoadingScreen(): ReactElement {
 	return (
-		<main className="flex flex-col items-center justify-center w-full h-dvh">
+		<div className="flex flex-col items-center justify-center w-full h-dvh">
 			<title>Redirecionando...</title>
 
-			<LoadingAnimation />
-		</main>
+			<main>
+				<LoadingAnimation />
+			</main>
+		</div>
 	);
 }
 
