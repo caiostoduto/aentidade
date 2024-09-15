@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer utilities {
-  .loading-container {
+  .loading-wrapper {
     @apply w-[30dvh] h-[31.5dvh]
   }
 
-  .circle-container {
+  .circle-wrapper {
     @apply absolute w-[100%] h-[100%];
   }
 
